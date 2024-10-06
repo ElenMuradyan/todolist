@@ -55,7 +55,7 @@ function ToDoList(){
                 }
             </ul>
             <div id="inputs">
-            <p><input type='checkbox' onClick={ hideAll } id='checkbox'></input><span>Hide all books</span></p>
+            <p><input type='checkbox' onClick={ hideAll } id='checkbox' name="todos" value="show"></input><span>Hide all books</span></p>
             <p><input type='text' placeholder='Add a book...' onChange={ handleInputChange } value={ input } id='input2'></input><button onClick={ handleToDoAdd }>Add</button></p>
             </div>
             </div>

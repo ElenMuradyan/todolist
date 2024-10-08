@@ -22,6 +22,9 @@ p{
     font-size: 30px;
     margin:10px;
 }
+#booksp{
+    text-align: start;
+}
 span{
     font-size: 20px;
     margin:5px;

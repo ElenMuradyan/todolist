@@ -24,7 +24,7 @@ function ToDoList(){
     };  
     
     const search = e => {
-        let value=e.target.value;
+        let value=e.target.value.trim();
         setResultToDos(toDos.filter(elem => elem.todoname.toLowerCase().match(value.toLowerCase())));
     };
     
@@ -38,13 +38,18 @@ function ToDoList(){
        setResultToDos(open ? [] : toDos);
     };
     
+    const handleKeyDown = event =>{
+    if (event.key === 'Enter'){
+        handleToDoAdd()
+    }
+    };
         return(
         <div id='container'>
             <p>Library</p>
             <span>Books for Students</span>
             <input onChange={ search } type='text' placeholder='Search books...' id='input1'></input>
             <div id='todos'>
-            <p>Books to Read</p>
+            <p id='booksp'>Books to Read</p>
             <ul>
                 {
                 resultToDos.map((elem,index)=>{
@@ -55,8 +60,8 @@ function ToDoList(){
                 }
             </ul>
             <div id="inputs">
-            <p><input type='checkbox' onClick={ hideAll } id='checkbox' name="todos" value="show"></input><span>Hide all books</span></p>
-            <p><input type='text' placeholder='Add a book...' onChange={ handleInputChange } value={ input } id='input2'></input><button onClick={ handleToDoAdd }>Add</button></p>
+            <p><input type='checkbox' onClick={ hideAll } id='checkbox' name="todos" value="show"></input><label for='checkbox'><span>Hide all books</span></label></p>
+            <p><input type='text' placeholder='Add a book...' onChange={ handleInputChange } value={ input } id='input2' onKeyDown={ handleKeyDown }></input><button onClick={ handleToDoAdd }>Add</button></p>
             </div>
             </div>
         </div>)

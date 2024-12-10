@@ -1,48 +1,51 @@
 import { useState } from 'react';
+
 import './index.css';
 
 function ToDoList(){
-    const [ toDos, setToDos ]=useState([]);
-    const [ resultToDos, setResultToDos ]=useState([]);
-    const [ input, setInput ]=useState('');
-    const [ open, setOpen ]=useState(true);
+        const [ toDos, setToDos ] = useState([]);
+        const [ resultToDos, setResultToDos ] = useState([]);
+        const [ input, setInput ] = useState('');
+        const [ open, setOpen ] = useState(true);
 
-    const handleToDoAdd= () => {
-    if(input===''){
-        return;
-    }
-    const toDo={
-    todoname:input,
-    };
-    setToDos([ ...toDos, toDo ]);
-    setResultToDos([ ...toDos, toDo ]);
-    setInput('');
-    };
-    
-    const handleInputChange = e => {
-        setInput(e.target.value);
-    };  
-    
-    const search = e => {
-        let value=e.target.value.trim();
-        setResultToDos(toDos.filter(elem => elem.todoname.toLowerCase().match(value.toLowerCase())));
-    };
-    
-    const deleteToDo = index => {
-        setToDos(toDos.filter((elem,i) => i!==index));
-        setResultToDos(toDos.filter((elem,i) => i!==index));
-    };
-    
-    const hideAll = () => {
-       setOpen(!open);
-       setResultToDos(open ? [] : toDos);
-    };
-    
-    const handleKeyDown = event =>{
-    if (event.key === 'Enter'){
-        handleToDoAdd()
-    }
-    };
+        const handleToDoAdd = () => {
+        if(input === '') {
+            return;
+        };
+
+        const toDo = {
+        todoname:input,
+        };
+
+        setToDos([ ...toDos, toDo ]);
+        setResultToDos([ ...toDos, toDo ]);
+        setInput('');
+        };
+        
+        const handleInputChange = e => {
+            setInput(e.target.value);
+        };  
+        
+        const search = e => {
+            let value=e.target.value.trim();
+            setResultToDos(toDos.filter(elem => elem.todoname.toLowerCase().match(value.toLowerCase())));
+        };
+        
+        const deleteToDo = index => {
+            setToDos(toDos.filter((elem,i) => i!==index));
+            setResultToDos(toDos.filter((elem,i) => i!==index));
+        };
+        
+        const hideAll = () => {
+        setOpen(!open);
+        setResultToDos(open ? [] : toDos);
+        };
+        
+        const handleKeyDown = event =>{
+        if (event.key === 'Enter') {
+            handleToDoAdd()
+        }};
+
         return(
         <div id='container'>
             <p>Library</p>
@@ -65,5 +68,6 @@ function ToDoList(){
             </div>
             </div>
         </div>)
-} 
-export default ToDoList
+};
+
+export default ToDoList;

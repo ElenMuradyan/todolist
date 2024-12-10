@@ -1,8 +1,9 @@
-import ToDoList from "./components/ToDoList"
+import ToDoList from "./components/ToDoList";
 
-const App=()=>{
-  return (<div id="div_container">
-<ToDoList></ToDoList>
-  </div>)
-}
-export default App
+const App = () => {
+  return (<div>
+    <ToDoList></ToDoList>
+        </div>)
+};
+
+export default App;
